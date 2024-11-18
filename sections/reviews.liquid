@@ -1,413 +1,686 @@
+{% liquid
+    assign reviews = section.blocks | where:"type","review"
+%}
 
+{% style %}
+    #shopify-section-{{ section.id }} {
+        --layout-alignment: {{ section.settings.layout_alignment }};
+        --padding-left: {{ section.settings.padding_left }}px;
+        --padding-right: {{ section.settings.padding_right }}px;
+        --padding-top: {{ section.settings.padding_top }}px;
+        --padding-bottom: {{ section.settings.padding_bottom }}px;
+        --background-color: {{ section.settings.background_color }};
 
+        background-color: var(--background-color);
+        display: flex;
+        flex-direction: column;
+        padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+
+    }
+{% endstyle %}
+
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when 'text' %}
+            {% render 'text-block', block:block %}
+        {% when 'reviews_container' %}
+            <div id="reviews-block-{{ block.id }}" {{ block.shopify_attributes }}>
+                {% style %}
+                    #reviews-block-{{ block.id }} {
+                        --layout-alignment: {{ block.settings.alignment }};
+                        --padding-left: {{ block.settings.padding_left }}px;
+                        --padding-right: {{ block.settings.padding_right }}px;
+                        --padding-top: {{ block.settings.padding_top }}px;
+                        --padding-bottom: {{ block.settings.padding_bottom }}px;
+
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        justify-content: var(--layout-alignment);
+                        padding-left: var(--padding-left);
+                        padding-right: var(--padding-right);
+                        padding-top: var(--padding-top);
+                        padding-bottom: var(--padding-bottom);
+
+                    }
+
+                    #reviews-block-{{ block.id }} .review {
+                        --global-border-radius: {{ block.settings.global_border_radius }}px;
+                        --global-gap: {{ block.settings.global_gap }}px;
+
+                        --global-padding-left: {{ block.settings.global_padding_left }}px;
+                        --global-padding-right: {{ block.settings.global_padding_right }}px;
+                        --global-padding-top: {{ block.settings.global_padding_top }}px;
+                        --global-padding-bottom: {{ block.settings.global_padding_bottom }}px;
+
+                        display: flex;
+                        flex-direction:column;
+                        gap: var(--global-gap);
+                        border-radius: var(--global-border-radius);
+                        padding: var(--global-padding-top) var(--global-padding-right) var(--global-padding-bottom) var(--global-padding-left);
+                        position: relative;
+                        height: fit-content;
+
+                    }
+
+                    #reviews-block-{{ block.id }} .image--container {
+                        position: absolute;
+                        width: 98px;
+                        height: 98px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        z-index: 1;
+
+                    }
+
+                    #reviews-block-{{ block.id }} .image--container.top {
+                        bottom: calc(100% - 49px);
+                        right: var(--tooth-offset);
+                    }
+
+                    #reviews-block-{{ block.id }} .image--container.bottom {
+                        top: calc(100% - 49px);
+                        right: var(--tooth-offset);
+                    }
+
+                    #reviews-block-{{ block.id }} .tooth--container {
+                        z-index: 1;
+                        position: absolute;
+                        bottom: -15px;
+                        left: -15px;
+                        
+                    }
+
+                    #reviews-block-{{ block.id }} .stars--container {
+                        display: flex;
+                        gap: 5px;
+                    }   
+                {% endstyle %}
+
+                {% for review in reviews %}
+                    {% liquid
+                        assign stars = review.settings.number_stars
+                        assign image_position = review.settings.image_position
+                        assign review_name = review.settings.review_name
+                        assign review_paragraph = review.settings.review_paragraph 
+                        assign tooth_color = review.settings.tooth_color
+                    %}
+                    <div id="review-block-{{ review.id }}" class="review {{ image_position }}" {{ review.shopify_attributes }}>
+                        {% style %}
+                            #review-block-{{ review.id }} {
+                                --max-width: {{ review.settings.max_width }}px;
+                                --text-alignment: {{ review.settings.alignment }};
+                                --background-color: {{ review.settings.background_color }};
+                                --star-active-color: {{ review.settings.active_star_color }};
+                                --star-inactive-color: {{ review.settings.inactive_star_color }};
+                                --margin-top: {{ review.settings.margin_top }}px;
+                                --margin-bottom: {{ review.settings.margin_bottom }}px;
+                                --margin-left: {{ review.settings.margin_left }}px;
+                                --margin-right: {{ review.settings.margin_right }}px;
+
+                                max-width: var(--max-width);
+                                text-align: var(--text-alignment);
+                                background-color: var(--background-color);
+                                margin-top: var(--margin-top);
+                                margin-bottom: var(--margin-bottom);
+                                margin-left: var(--margin-left);
+                                margin-right: var(--margin-right);
+                            }
+
+                            #review-block-{{ review.id }} .stars--container svg.active {
+                                fill: var(--star-active-color);
+                            }
+
+                            #review-block-{{ review.id }} .stars--container svg {
+                                fill: var(--star-inactive-color);
+                            }
+
+                            #review-block-{{ review.id }} .reviewer--container {
+                                --font-size: {{ review.settings.review_name_font_size }}px;
+                                --line-height: {{ review.settings.review_name_line_height }}px;
+                                line-height: calc(var(--line-height) * var(--font-body-scale));
+                                font-size: calc(var(--font-size) * var(--font-body-scale));
+                            }
+
+                            #review-block-{{ review.id }} .image--container {
+                                --tooth-offset: {{ review.settings.tooth_offset }}px;
+                            }
+                        {% endstyle %}
+
+                        {% if review.settings.reviewer_image %}
+                            <div class="image--container {{ image_position }}">
+                                {{ review.settings.reviewer_image | image_url: width: 100, height: 100 | image_tag: loading: 'lazy' }}
+                            </div>
+                        {% endif %}
+
+                        <div class="stars--container">
+                            {% for i in (1..5) %}
+                                {% capture class %}
+                                    {% if i <= stars %}
+                                        active
+                                    {% endif %}
+                                {% endcapture %}
+                                {% render 'icon-star' class:class %}
+                            {% endfor %}
+                        </div>
+                        <div class="paragraph--container para">
+                            {{ review_paragraph }}
+                        </div>
+                        <div class="reviewer--container">
+                            {{ review_name }}
+                        </div>
+                        <div class="tooth--container">
+                            {% render 'icon-tooth' color:tooth_color %}
+                        </div>
+                    </div>
+                {% endfor %}
+                
+            </div>
+    {% endcase %}
+{% endfor %}
 
 {% schema %}
 {
     "name": "Reviews",
+    "tag": "section",
     "settings": [
-            {
-                "type": "header",
-                "content": "Content"
-            },
-            {
-                "type": "inline_richtext",
-                "id": "subhead",
-                "label": "Subhead"
-            },
-            {
-                "type": "inline_richtext",
-                "id": "heading",
-                "label": "Heading"
-            },
-            {
-                "type": "header",
-                "content": "Alignment"
-            },
-            {
-                "type": "select",
-                "id": "layout_alignment",
-                "label": "alignment",
-                "default": "center",
-                "options": [
-                    {
-                        "value": "left",
-                        "label": "left"
-                    },
-                    {
-                        "value": "center",
-                        "label": "center"
-                    },
-                    {
-                        "value": "right",
-                        "label": "right"
-                    }
-                ]
-            },
-            {
-                "type": "header",
-                "content": "Color"
-            },
-            {
-                "type": "color_background",
-                "id": "background_color",
-                "label": "Background Color"
-            },
-            {
-                "type": "color",
-                "id": "subhead_color",
-                "label": "Subhead Color"
-            },
-            {
-                "type": "color",
-                "id": "header_color",
-                "label": "Header Color"
-            },
-            {
-                "type": "header",
-                "content": "Spacing"
-            },
-            {
-                "type": "range",
-                "id": "padding_top",
-                "label": "Padding Top",
-                "min": 0,
-                "max": 200,
-                "step": 2,
-                "unit": "px",
-                "default": 120
-            },
-            {
-                "type": "range",
-                "id": "padding_bottom",
-                "label": "Padding Bottom",
-                "min": 0,
-                "max": 200,
-                "step": 2,
-                "unit": "px",
-                "default": 120
-            },
-            {
-                "type": "range",
-                "id": "padding_left",
-                "label": "Padding Left",
-                "min": 0,
-                "max": 200,
-                "step": 2,
-                "unit": "px",
-                "default": 120
-            },
-            {
-                "type": "range",
-                "id": "padding_right",
-                "label": "Padding Right",
-                "min": 0,
-                "max": 200,
-                "step": 2,
-                "unit": "px",
-                "default": 120
-            }
-        ],
-        "blocks": [
-            {
-                "name": "Text",
-                "type": "text",
-                "settings": [
-                    {
-                        "type": "richtext",
-                        "id": "text",
-                        "label": "Text"
-                    },
-                    {
-                        "type": "header",
-                        "content": "Controls"
-                    },
-                    {
-                        "type": "select",
-                        "id": "type",
-                        "label": "Type",
-                        "default": "none",
-                        "info": "Please choose 'none' for headers.",
-                        "options": [
-                            {
-                                "value": "none",
-                                "label": "normal"
-                            },
-                            {
-                                "value": "subhead",
-                                "label": "Subhead"
-                            },
-                            {
-                                "value": "para",
-                                "label": "Para"
-                            },
-                            {
-                                "value": "subtext",
-                                "label": "Subtext"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "text_alignment",
-                        "id": "alignment",
-                        "label": "Text alignment",
-                        "default": "center"
-                    },
-                    {
-                        "type": "header",
-                        "content": "Color"
-                    },
-                    {
-                        "type": "color",
-                        "id": "text_normal_state",
-                        "label": "Normal state"
-                    },
-                    {
-                        "type": "color",
-                        "id": "text_hover_state",
-                        "label": "Hover state"
-                    },
-                    {
-                        "type": "header",
-                        "content": "Spacing"
-                    },
-                    {
-                        "type": "range",
-                        "id": "margin_bottom",
-                        "label": "Margin Bottom",
-                        "min": 0,
-                        "max": 100,
-                        "step": 1,
-                        "unit": "px",
-                        "default": 8
-                    },
-                    {
-                        "type": "range",
-                        "id": "margin_top",
-                        "label": "Margin Bottom",
-                        "min": 0,
-                        "max": 100,
-                        "step": 1,
-                        "unit": "px",
-                        "default": 8
-                    }
-                ]
-            },
-            {
-                "name": "Reviews Container",
-                "type": "reviews_container",
-                "settings": [
-                    {
-                        "type": "header",
-                        "content": "Content"
-                    },
-                    {
-                        "type": "select",
-                        "id": "alignment",
-                        "label": "Alignment",
-                        "default": "center",
-                        "options": [
-                            {
-                                "value": "left",
-                                "label": "Left"
-                            },
-                            {
-                                "value": "center",
-                                "label": "Center"
-                            },
-                            {
-                                "value": "right",
-                                "label": "Right"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "range",
-                        "id": "global_border_radius",
-                        "label": "Global Border Radius",
-                        "min": 0,
-                        "max": 50,
-                        "step": 1,
-                        "unit": "px",
-                        "default": 16
-                    },
-                    {
-                        "type": "header",
-                        "content": "Elements Global Spacing"
-                    },
-                    {
-                        "type": "range",
-                        "id": "global_gap",
-                        "label": "Global Gap",
-                        "min": 0,
-                        "max": 100,
-                        "step": 1,
-                        "unit": "px",
-                        "default": 16
-                    },
-                    {
-                        "type": "range",
-                        "id": "global_padding_top",
-                        "label": "Padding Top ",
-                        "min": 0,
-                        "max": 200,
-                        "step": 2,
-                        "unit": "px",
-                        "default": 120
-                    },
-                    {
-                        "type": "range",
-                        "id": "global_padding_bottom",
-                        "label": "Padding Bottom",
-                        "min": 0,
-                        "max": 200,
-                        "step": 2,
-                        "unit": "px",
-                        "default": 120
-                    },
-                    {
-                        "type": "range",
-                        "id": "global_padding_left",
-                        "label": "Padding Left",
-                        "min": 0,
-                        "max": 200,
-                        "step": 2,
-                        "unit": "px",
-                        "default": 120
-                    },
-                    {
-                        "type": "range",
-                        "id": "global_padding_right",
-                        "label": "Padding Right",
-                        "min": 0,
-                        "max": 200,
-                        "step": 2,
-                        "unit": "px",
-                        "default": 120
-                    }
-                ]
-            },
-            {
-                "name": "Review",
-                "type": "review",
-                "settings": [
-                    {
-                        "type": "header",
-                        "content": "Image Settings"
-                    },
-                    {
-                        "type": "image_picker",
-                        "id": "reviewer_image",
-                        "label": "Reviewer Image"
-                    },
-                    {
-                        "type": "select",
-                        "id": "image_position",
-                        "label": "Image Position",
-                        "default": "top",
-                        "info": "We can also achieve this using 2 ranges which dictate the 'left' & 'top' attributes",
-                        "options": [
-                            {
-                                "value": "top",
-                                "label": "Top"
-                            },
-                            {
-                                "value": "bottom",
-                                "label": "Bottom"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "header",
-                        "content": "Text Settings"
-                    },
-                    {
-                        "type": "inline_richtext",
-                        "id": "review_name",
-                        "label": "Reviewer Name",
-                        "info": "Adding font size & line height settings for this since it is not pre-determined"
-                    },
-                    {
-                        "type": "richtext",
-                        "id": "review_paragraph",
-                        "label": "Review paragraph"
-                    },
+        {
+            "type": "header",
+            "content": "Content"
+        },
+        {
+            "type": "header",
+            "content": "Alignment"
+        },
+        {
+            "type": "select",
+            "id": "layout_alignment",
+            "label": "alignment",
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "left"
+                },
+                {
+                    "value": "center",
+                    "label": "center"
+                },
+                {
+                    "value": "right",
+                    "label": "right"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Color"
+        },
+        {
+            "type": "color_background",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "header",
+            "content": "Spacing"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "label": "Padding Top",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "default": 120
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "label": "Padding Bottom",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "default": 120
+        },
+        {
+            "type": "range",
+            "id": "padding_left",
+            "label": "Padding Left",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "default": 60
+        },
+        {
+            "type": "range",
+            "id": "padding_right",
+            "label": "Padding Right",
+            "min": 0,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "default": 60
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Text",
+            "type": "text",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Controls"
+                },
+                {
+                    "type": "select",
+                    "id": "type",
+                    "label": "Type",
+                    "default": "",
+                    "info": "Please choose 'normal' for headers.",
+                    "options": [
+                        {
+                            "value": "",
+                            "label": "Normal"
+                        },
+                        {
+                            "value": "subhead",
+                            "label": "Subhead"
+                        },
+                        {
+                            "value": "para",
+                            "label": "Para"
+                        },
+                        {
+                            "value": "subtext",
+                            "label": "Subtext"
+                        }
+                    ]
+                },
+                {
+                    "type": "text_alignment",
+                    "id": "text_alignment",
+                    "label": "Text alignment",
+                    "default": "center"
+                },
+                {
+                    "type": "header",
+                    "content": "Color"
+                },
+                {
+                    "type": "color",
+                    "id": "text_normal_state_color",
+                    "label": "Normal state"
+                },
+                {
+                    "type": "color",
+                    "id": "text_hover_state_color",
+                    "label": "Hover state"
+                },
+                {
+                    "type": "header",
+                    "content": "Spacing"
+                },
+                {
+                    "type": "range",
+                    "id": "margin_bottom",
+                    "label": "Margin Bottom",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 8
+                },
+                {
+                    "type": "range",
+                    "id": "margin_top",
+                    "label": "Margin Top",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 8
+                }
+            ]
+        },
+        {
+            "name": "Reviews Container",
+            "type": "reviews_container",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Content"
+                },
+                {
+                    "type": "select",
+                    "id": "alignment",
+                    "label": "Alignment",
+                    "default": "center",
+                    "options": [
+                        {
+                            "value": "flex-start",
+                            "label": "Left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "Center"
+                        },
+                        {
+                            "value": "flex-end",
+                            "label": "Right"
+                        }
+                    ]
+                },
+                {
+                    "type": "range",
+                    "id": "global_border_radius",
+                    "label": "Global Border Radius",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 16
+                },
+                {
+                    "type": "header",
+                    "content": "Elements Global Spacing"
+                },
+                {
+                    "type": "range",
+                    "id": "global_gap",
+                    "label": "Global Gap",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 16
+                },
+                {
+                    "type": "range",
+                    "id": "global_padding_top",
+                    "label": "Padding Top ",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 32
+                },
+                {
+                    "type": "range",
+                    "id": "global_padding_bottom",
+                    "label": "Padding Bottom",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 32
+                },
+                {
+                    "type": "range",
+                    "id": "global_padding_left",
+                    "label": "Padding Left",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 32
+                },
+                {
+                    "type": "range",
+                    "id": "global_padding_right",
+                    "label": "Padding Right",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 32
+                },
+                {
+                    "type": "header",
+                    "content": "Spacing"
+                },
+                {
+                    "type": "range",
+                    "id": "padding_top",
+                    "label": "Padding Top ",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "padding_bottom",
+                    "label": "Padding Bottom",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "padding_left",
+                    "label": "Padding Left",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "padding_right",
+                    "label": "Padding Right",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 0
+                }
+            ]
+        },
+        {
+            "name": "Review",
+            "type": "review",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Image Settings"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "reviewer_image",
+                    "label": "Reviewer Image"
+                },
+                {
+                    "type": "select",
+                    "id": "image_position",
+                    "label": "Image Position",
+                    "default": "top",
+                    "info": "We can also achieve this using 2 ranges which dictate the 'left' & 'top' attributes",
+                    "options": [
+                        {
+                            "value": "top",
+                            "label": "Top"
+                        },
+                        {
+                            "value": "bottom",
+                            "label": "Bottom"
+                        }
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "Text Settings"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "review_name",
+                    "label": "Reviewer Name",
+                    "info": "Adding font size & line height settings for this since it is not pre-determined",
+                    "default": "~ Anna Smith"
+                },
+                {
+                    "type": "richtext",
+                    "id": "review_paragraph",
+                    "label": "Review paragraph",
+                    "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi id enim pulvinar suscipit. Praesent pretium orci non velit bibendum,</p>"
+                },
+                {
+                    "type": "paragraph",
+                    "content": "Controls"
+                },
+                {
+                    "type": "text_alignment",
+                    "id": "alignment",
+                    "label": "Text alignment",
+                    "default": "left"
+                },
+                {
+                    "type": "header",
+                    "content": "Misc Settings"
+                },
+                {
+                    "type": "range",
+                    "id": "number_stars",
+                    "label": "Number Stars",
+                    "min": 1,
+                    "max": 5,
+                    "step": 1,
+                    "unit": "str",
+                    "default": 3
+                },
+                {
+                    "type": "range",
+                    "id": "tooth_offset",
+                    "label": "Tooth Offset",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 32
+                },
+                {
+                    "type": "header",
+                    "content": "Color"
+                },
+                {
+                    "type": "color_background",
+                    "id": "background_color",
+                    "label": "Background color",
+                    "default": "#F6F7D4"
+                },
+                {
+                    "type": "color",
+                    "id": "active_star_color",
+                    "label": "Active star color",
+                    "default": "#000000"
+                },
+                {
+                    "type": "color",
+                    "id": "inactive_star_color",
+                    "label": "Inactive star color",
+                    "default": "#A6A6A6"
+                },
+                {
+                    "type": "color",
+                    "id": "tooth_color",
+                    "label": "Tooth color",
+                    "default": "#FCF5EA"
+                },
+                {
+                    "type": "header",
+                    "content": "Font (Review name)"
+                },
+                {
+                    "type": "range",
+                    "id": "review_name_font_size",
+                    "label": "Font size",
+                    "min": 8,
+                    "max": 72,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 12
+                },
+                {
+                    "type": "range",
+                    "id": "review_name_line_height",
+                    "label": "Line height",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "default": 14
+                },
+                {
+                    "type": "header",
+                    "content": "Spacing"
+                },
+                {
+                    "type": "number",
+                    "id": "max_width",
+                    "label": "Max width",
+                    "default": 361
+                },
+                {
+                    "type": "range",
+                    "id": "margin_bottom",
+                    "label": "Margin Bottom",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 8
+                },
+                {
+                    "type": "range",
+                    "id": "margin_top",
+                    "label": "Margin Bottom",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 8
+                },
+                {
+                    "type": "range",
+                    "id": "margin_left",
+                    "label": "Margin Left",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 32
+                },
+                {
+                    "type": "range",
+                    "id": "margin_right",
+                    "label": "Margin Right",
+                    "min": 0,
+                    "max": 200,
+                    "step": 2,
+                    "unit": "px",
+                    "default": 32
+                }
 
-                    {
-                        "type": "paragraph",
-                        "content": "Controls"
-                    },
-                    {
-                        "type": "select",
-                        "id": "type",
-                        "label": "Type",
-                        "default": "subtext",
-                        "info": "Please choose 'none' for headers.",
-                        "options": [
-                            {
-                                "value": "none",
-                                "label": "normal"
-                            },
-                            {
-                                "value": "subhead",
-                                "label": "Subhead"
-                            },
-                            {
-                                "value": "para",
-                                "label": "Para"
-                            },
-                            {
-                                "value": "subtext",
-                                "label": "Subtext"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "text_alignment",
-                        "id": "alignment",
-                        "label": "Text alignment",
-                        "default": "center"
-                    },
-                    {
-                        "type": "paragraph",
-                        "content": "Color"
-                    },
-                    {
-                        "type": "color",
-                        "id": "text_normal_state",
-                        "label": "Normal state"
-                    },
-                    {
-                        "type": "color",
-                        "id": "text_hover_state",
-                        "label": "Hover state"
-                    },
-                    {
-                        "type": "paragraph",
-                        "content": "Spacing"
-                    },
-                    {
-                        "type": "range",
-                        "id": "margin_bottom",
-                        "label": "Margin Bottom",
-                        "min": 0,
-                        "max": 100,
-                        "step": 1,
-                        "unit": "px",
-                        "default": 8
-                    },
-                    {
-                        "type": "range",
-                        "id": "margin_top",
-                        "label": "Margin Bottom",
-                        "min": 0,
-                        "max": 100,
-                        "step": 1,
-                        "unit": "px",
-                        "default": 8
-                    },
-
-                ]
-            }
-        ]
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Reviews - Default"
+        }
+    ]
 }
 {% endschema %}

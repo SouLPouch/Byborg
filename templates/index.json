@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -31,9 +40,9 @@
         "image_height": "large",
         "desktop_content_position": "bottom-center",
         "show_text_box": false,
-        "image_behavior": "none",
         "desktop_content_alignment": "center",
         "color_scheme": "scheme-3",
+        "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
@@ -50,12 +59,11 @@
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -63,13 +71,193 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "reviews_edGR3R": {
+      "type": "reviews",
+      "blocks": {
+        "text_wJ4z7T": {
+          "type": "text",
+          "settings": {
+            "text": "<p>#WOMEN TELL WOMEN</p>",
+            "type": "subhead",
+            "text_alignment": "center",
+            "text_normal_state_color": "#000000",
+            "text_hover_state_color": "#000000",
+            "margin_bottom": 12,
+            "margin_top": 0
+          }
+        },
+        "text_QJH8pd": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Real people, real results</h2>",
+            "type": "",
+            "text_alignment": "center",
+            "text_normal_state_color": "",
+            "text_hover_state_color": "",
+            "margin_bottom": 48,
+            "margin_top": 0
+          }
+        },
+        "reviews_container_kCp3Nc": {
+          "type": "reviews_container",
+          "settings": {
+            "alignment": "center",
+            "global_border_radius": 16,
+            "global_gap": 16,
+            "global_padding_top": 32,
+            "global_padding_bottom": 32,
+            "global_padding_left": 32,
+            "global_padding_right": 32,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0
+          }
+        },
+        "review_RPdnDb": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "shopify://shop_images/c6e153d196d1885f635171d36a061dc5.png",
+            "image_position": "top",
+            "review_name": "<strong>~ Anna Smith</strong>",
+            "review_paragraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi id enim pulvinar suscipit. Praesent pretium orci non velit bibendum,</p>",
+            "alignment": "left",
+            "number_stars": 3,
+            "tooth_offset": 32,
+            "background_color": "#F6F7D4",
+            "active_star_color": "#000000",
+            "inactive_star_color": "#a6a6a6",
+            "tooth_color": "#f6f7d4",
+            "review_name_font_size": 12,
+            "review_name_line_height": 14,
+            "max_width": 361,
+            "margin_bottom": 0,
+            "margin_top": 50,
+            "margin_left": 0,
+            "margin_right": 32
+          }
+        },
+        "review_Dt98FL": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "shopify://shop_images/c6e153d196d1885f635171d36a061dc5.png",
+            "image_position": "bottom",
+            "review_name": "<strong>~ Sara Jacob</strong>",
+            "review_paragraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi id enim pulvinar suscipit. Praesent pretium orci non velit bibendum,</p>",
+            "alignment": "left",
+            "number_stars": 3,
+            "tooth_offset": 80,
+            "background_color": "#EDEDF5",
+            "active_star_color": "#000000",
+            "inactive_star_color": "#a6a6a6",
+            "tooth_color": "#fcf5ea",
+            "review_name_font_size": 12,
+            "review_name_line_height": 14,
+            "max_width": 409,
+            "margin_bottom": 0,
+            "margin_top": 0,
+            "margin_left": 32,
+            "margin_right": 32
+          }
+        },
+        "review_wAyMnn": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "shopify://shop_images/c6e153d196d1885f635171d36a061dc5.png",
+            "image_position": "top",
+            "review_name": "<strong>~ Lara Zoe</strong>",
+            "review_paragraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi id enim pulvinar suscipit. Praesent pretium orci non velit bibendum,</p>",
+            "alignment": "left",
+            "number_stars": 3,
+            "tooth_offset": 32,
+            "background_color": "#FCF5EA",
+            "active_star_color": "#000000",
+            "inactive_star_color": "#a6a6a6",
+            "tooth_color": "#fcf5ea",
+            "review_name_font_size": 12,
+            "review_name_line_height": 14,
+            "max_width": 361,
+            "margin_bottom": 0,
+            "margin_top": 0,
+            "margin_left": 32,
+            "margin_right": 0
+          }
+        },
+        "review_q8NpX8": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "shopify://shop_images/c6e153d196d1885f635171d36a061dc5.png",
+            "image_position": "top",
+            "review_name": "<strong>~ Franklin Jackson </strong>",
+            "review_paragraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi id enim pulvinar suscipit. Praesent pretium orci non velit bibendum,</p>",
+            "alignment": "left",
+            "number_stars": 3,
+            "tooth_offset": 32,
+            "background_color": "#FCF5EA",
+            "active_star_color": "#000000",
+            "inactive_star_color": "#a6a6a6",
+            "tooth_color": "#fcf5ea",
+            "review_name_font_size": 12,
+            "review_name_line_height": 14,
+            "max_width": 361,
+            "margin_bottom": 0,
+            "margin_top": 62,
+            "margin_left": 32,
+            "margin_right": 32
+          }
+        },
+        "review_cKxjmQ": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "shopify://shop_images/c6e153d196d1885f635171d36a061dc5.png",
+            "image_position": "bottom",
+            "review_name": "<strong>~ Jane Klien</strong>",
+            "review_paragraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi id enim pulvinar suscipit. Praesent pretium orci non velit bibendum,</p>",
+            "alignment": "left",
+            "number_stars": 3,
+            "tooth_offset": 32,
+            "background_color": "#F6F7D4",
+            "active_star_color": "#000000",
+            "inactive_star_color": "#a6a6a6",
+            "tooth_color": "#fcf5ea",
+            "review_name_font_size": 12,
+            "review_name_line_height": 14,
+            "max_width": 361,
+            "margin_bottom": 8,
+            "margin_top": 27,
+            "margin_left": 32,
+            "margin_right": 32
+          }
+        }
+      },
+      "block_order": [
+        "text_wJ4z7T",
+        "text_QJH8pd",
+        "reviews_container_kCp3Nc",
+        "review_RPdnDb",
+        "review_Dt98FL",
+        "review_wAyMnn",
+        "review_q8NpX8",
+        "review_cKxjmQ"
+      ],
+      "settings": {
+        "layout_alignment": "center",
+        "background_color": "",
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "padding_left": 60,
+        "padding_right": 60
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "reviews_edGR3R"
   ]
 }
