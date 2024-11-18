@@ -1,0 +1,413 @@
+
+
+
+{% schema %}
+{
+    "name": "Reviews",
+    "settings": [
+            {
+                "type": "header",
+                "content": "Content"
+            },
+            {
+                "type": "inline_richtext",
+                "id": "subhead",
+                "label": "Subhead"
+            },
+            {
+                "type": "inline_richtext",
+                "id": "heading",
+                "label": "Heading"
+            },
+            {
+                "type": "header",
+                "content": "Alignment"
+            },
+            {
+                "type": "select",
+                "id": "layout_alignment",
+                "label": "alignment",
+                "default": "center",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "left"
+                    },
+                    {
+                        "value": "center",
+                        "label": "center"
+                    },
+                    {
+                        "value": "right",
+                        "label": "right"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "Color"
+            },
+            {
+                "type": "color_background",
+                "id": "background_color",
+                "label": "Background Color"
+            },
+            {
+                "type": "color",
+                "id": "subhead_color",
+                "label": "Subhead Color"
+            },
+            {
+                "type": "color",
+                "id": "header_color",
+                "label": "Header Color"
+            },
+            {
+                "type": "header",
+                "content": "Spacing"
+            },
+            {
+                "type": "range",
+                "id": "padding_top",
+                "label": "Padding Top",
+                "min": 0,
+                "max": 200,
+                "step": 2,
+                "unit": "px",
+                "default": 120
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "label": "Padding Bottom",
+                "min": 0,
+                "max": 200,
+                "step": 2,
+                "unit": "px",
+                "default": 120
+            },
+            {
+                "type": "range",
+                "id": "padding_left",
+                "label": "Padding Left",
+                "min": 0,
+                "max": 200,
+                "step": 2,
+                "unit": "px",
+                "default": 120
+            },
+            {
+                "type": "range",
+                "id": "padding_right",
+                "label": "Padding Right",
+                "min": 0,
+                "max": 200,
+                "step": 2,
+                "unit": "px",
+                "default": 120
+            }
+        ],
+        "blocks": [
+            {
+                "name": "Text",
+                "type": "text",
+                "settings": [
+                    {
+                        "type": "richtext",
+                        "id": "text",
+                        "label": "Text"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Controls"
+                    },
+                    {
+                        "type": "select",
+                        "id": "type",
+                        "label": "Type",
+                        "default": "none",
+                        "info": "Please choose 'none' for headers.",
+                        "options": [
+                            {
+                                "value": "none",
+                                "label": "normal"
+                            },
+                            {
+                                "value": "subhead",
+                                "label": "Subhead"
+                            },
+                            {
+                                "value": "para",
+                                "label": "Para"
+                            },
+                            {
+                                "value": "subtext",
+                                "label": "Subtext"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "text_alignment",
+                        "id": "alignment",
+                        "label": "Text alignment",
+                        "default": "center"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Color"
+                    },
+                    {
+                        "type": "color",
+                        "id": "text_normal_state",
+                        "label": "Normal state"
+                    },
+                    {
+                        "type": "color",
+                        "id": "text_hover_state",
+                        "label": "Hover state"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Spacing"
+                    },
+                    {
+                        "type": "range",
+                        "id": "margin_bottom",
+                        "label": "Margin Bottom",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "px",
+                        "default": 8
+                    },
+                    {
+                        "type": "range",
+                        "id": "margin_top",
+                        "label": "Margin Bottom",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "px",
+                        "default": 8
+                    }
+                ]
+            },
+            {
+                "name": "Reviews Container",
+                "type": "reviews_container",
+                "settings": [
+                    {
+                        "type": "header",
+                        "content": "Content"
+                    },
+                    {
+                        "type": "select",
+                        "id": "alignment",
+                        "label": "Alignment",
+                        "default": "center",
+                        "options": [
+                            {
+                                "value": "left",
+                                "label": "Left"
+                            },
+                            {
+                                "value": "center",
+                                "label": "Center"
+                            },
+                            {
+                                "value": "right",
+                                "label": "Right"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "range",
+                        "id": "global_border_radius",
+                        "label": "Global Border Radius",
+                        "min": 0,
+                        "max": 50,
+                        "step": 1,
+                        "unit": "px",
+                        "default": 16
+                    },
+                    {
+                        "type": "header",
+                        "content": "Elements Global Spacing"
+                    },
+                    {
+                        "type": "range",
+                        "id": "global_gap",
+                        "label": "Global Gap",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "px",
+                        "default": 16
+                    },
+                    {
+                        "type": "range",
+                        "id": "global_padding_top",
+                        "label": "Padding Top ",
+                        "min": 0,
+                        "max": 200,
+                        "step": 2,
+                        "unit": "px",
+                        "default": 120
+                    },
+                    {
+                        "type": "range",
+                        "id": "global_padding_bottom",
+                        "label": "Padding Bottom",
+                        "min": 0,
+                        "max": 200,
+                        "step": 2,
+                        "unit": "px",
+                        "default": 120
+                    },
+                    {
+                        "type": "range",
+                        "id": "global_padding_left",
+                        "label": "Padding Left",
+                        "min": 0,
+                        "max": 200,
+                        "step": 2,
+                        "unit": "px",
+                        "default": 120
+                    },
+                    {
+                        "type": "range",
+                        "id": "global_padding_right",
+                        "label": "Padding Right",
+                        "min": 0,
+                        "max": 200,
+                        "step": 2,
+                        "unit": "px",
+                        "default": 120
+                    }
+                ]
+            },
+            {
+                "name": "Review",
+                "type": "review",
+                "settings": [
+                    {
+                        "type": "header",
+                        "content": "Image Settings"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "reviewer_image",
+                        "label": "Reviewer Image"
+                    },
+                    {
+                        "type": "select",
+                        "id": "image_position",
+                        "label": "Image Position",
+                        "default": "top",
+                        "info": "We can also achieve this using 2 ranges which dictate the 'left' & 'top' attributes",
+                        "options": [
+                            {
+                                "value": "top",
+                                "label": "Top"
+                            },
+                            {
+                                "value": "bottom",
+                                "label": "Bottom"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "header",
+                        "content": "Text Settings"
+                    },
+                    {
+                        "type": "inline_richtext",
+                        "id": "review_name",
+                        "label": "Reviewer Name",
+                        "info": "Adding font size & line height settings for this since it is not pre-determined"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "review_paragraph",
+                        "label": "Review paragraph"
+                    },
+
+                    {
+                        "type": "paragraph",
+                        "content": "Controls"
+                    },
+                    {
+                        "type": "select",
+                        "id": "type",
+                        "label": "Type",
+                        "default": "subtext",
+                        "info": "Please choose 'none' for headers.",
+                        "options": [
+                            {
+                                "value": "none",
+                                "label": "normal"
+                            },
+                            {
+                                "value": "subhead",
+                                "label": "Subhead"
+                            },
+                            {
+                                "value": "para",
+                                "label": "Para"
+                            },
+                            {
+                                "value": "subtext",
+                                "label": "Subtext"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "text_alignment",
+                        "id": "alignment",
+                        "label": "Text alignment",
+                        "default": "center"
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": "Color"
+                    },
+                    {
+                        "type": "color",
+                        "id": "text_normal_state",
+                        "label": "Normal state"
+                    },
+                    {
+                        "type": "color",
+                        "id": "text_hover_state",
+                        "label": "Hover state"
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": "Spacing"
+                    },
+                    {
+                        "type": "range",
+                        "id": "margin_bottom",
+                        "label": "Margin Bottom",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "px",
+                        "default": 8
+                    },
+                    {
+                        "type": "range",
+                        "id": "margin_top",
+                        "label": "Margin Bottom",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "px",
+                        "default": 8
+                    },
+
+                ]
+            }
+        ]
+}
+{% endschema %}
