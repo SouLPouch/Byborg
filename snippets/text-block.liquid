@@ -17,6 +17,7 @@
     assign hover_text_color = hover_text_color | default: block.settings.text_hover_state_color
     assign margin_top = margin_top | default: block.settings.margin_top | default: 0
     assign margin_bottom = margin_bottom | default: block.settings.margin_bottom | default: 0
+    assign max_width = max_width | default: block.settings.max_width | default: "100%"
     assign type = type | default: block.settings.type
 %}
 
@@ -27,7 +28,9 @@
         --text-color-hover: {{ hover_text_color }};
         --margin-bottom: {{ margin_bottom }}px;
         --margin-top: {{ margin_top }}px;
+        --max-width: {{ max_width }}px;
 
+        max-width: var(--max-width);
         text-align: var(--text-alignment);
         color: var(--text-color-normal);
         margin-bottom: var(--margin-bottom);
@@ -40,5 +43,5 @@
 {% endstyle %}
 
 <div id="text-block-{{ block.id }}" class="text-block {{ type }}" {{ block.shopify_attributes }}>
-  {{ text}}
-</div>
+  {{ text }}
+</div> 
