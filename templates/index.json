@@ -12,68 +12,128 @@
     "image_banner": {
       "type": "image-banner",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "text_custom_zYtYxi": {
+          "type": "text_custom",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "text": "<h1><strong>Your unique blend for optimal health and wellness.</strong></h1>",
+            "type": "",
+            "text_alignment": "left",
+            "max_width": 626,
+            "text_normal_state_color": "#000000",
+            "text_hover_state_color": "#000000",
+            "margin_bottom": 8,
+            "margin_top": 0
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "<strong>Take a quiz - it’s free</strong>",
             "button_link_1": "shopify://collections/all",
+            "button_style": "first",
+            "background_color": "#000000",
+            "text_color": "#eaf586",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
           }
+        },
+        "icon_with_text_QGNrtb": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "gift",
+            "title": "<h3><strong>Your Supplement Quiz</strong></h3>",
+            "title_padding_left": 0,
+            "paragraph": "<p>Discover tailored results just for you in our quick 2-minute free quiz!</p>",
+            "paragraph_padding_left": 18,
+            "max_width": 352,
+            "icon_position": "flex-start",
+            "text_alignment": "left",
+            "title_color": "",
+            "paragraph_color": ""
+          }
+        },
+        "icon_with_text_F8XYjg": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "chat",
+            "title": "<h3><strong>Customized Recommendations</strong></h3>",
+            "title_padding_left": 0,
+            "paragraph": "<p>Find your perfect supplements based on your unique needs and goals!</p>",
+            "paragraph_padding_left": 0,
+            "max_width": 435,
+            "icon_position": "flex-start",
+            "text_alignment": "left",
+            "title_color": "",
+            "paragraph_color": ""
+          }
+        },
+        "icon_with_text_wMyyR8": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "star",
+            "title": "<h3><strong>Building Habits</strong></h3>",
+            "title_padding_left": 0,
+            "paragraph": "<p>Embark on your path to better health with expert guidance every step of the way</p>",
+            "paragraph_padding_left": 0,
+            "max_width": 370,
+            "icon_position": "flex-start",
+            "text_alignment": "left",
+            "title_color": "",
+            "paragraph_color": ""
+          }
+        },
+        "additional_image_3hyn77": {
+          "type": "additional_image",
+          "settings": {
+            "image": "shopify://shop_images/unsplash__H1ZmUzwp9w.png",
+            "margin_left": 12,
+            "margin_right": 0
+          }
+        },
+        "additional_image_zBnzgC": {
+          "type": "additional_image",
+          "settings": {
+            "image": "shopify://shop_images/image_666.png",
+            "margin_left": 12,
+            "margin_right": 0
+          }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "text_custom_zYtYxi",
+        "button",
+        "icon_with_text_QGNrtb",
+        "icon_with_text_F8XYjg",
+        "icon_with_text_wMyyR8",
+        "additional_image_3hyn77",
+        "additional_image_zBnzgC"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
+        "image": "shopify://shop_images/af3dd6b444b32e33b1f6e10e687a76e2.png",
+        "image_overlay_opacity": 0,
+        "image_opacity": 0.3,
+        "image_border_radius": 0,
+        "force_page_width": false,
+        "image_height": "small",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "color_scheme": "scheme-3",
+        "content_max_width": 626,
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_left": 32,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
       }
     },
     "reviews_edGR3R": {
@@ -97,8 +157,8 @@
             "text": "<h2>Real people, real results</h2>",
             "type": "",
             "text_alignment": "center",
-            "text_normal_state_color": "",
-            "text_hover_state_color": "",
+            "text_normal_state_color": "#000000",
+            "text_hover_state_color": "#000000",
             "margin_bottom": 48,
             "margin_top": 0
           }
@@ -253,11 +313,101 @@
         "padding_left": 60,
         "padding_right": 60
       }
+    },
+    "image_banner_DErxYD": {
+      "type": "image-banner",
+      "blocks": {
+        "text_custom_xhJhFA": {
+          "type": "text_custom",
+          "settings": {
+            "text": "<h2>Join the safe space of community!</h2>",
+            "type": "",
+            "text_alignment": "left",
+            "max_width": 626,
+            "text_normal_state_color": "#000000",
+            "text_hover_state_color": "#000000",
+            "margin_bottom": 8,
+            "margin_top": 0
+          }
+        },
+        "buttons_9rKwgG": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "<strong>Join today - it’s free </strong>",
+            "button_link_1": "shopify://collections/all",
+            "button_style": "second",
+            "background_color": "#EAF586",
+            "text_color": "#000000",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_custom_xhJhFA",
+        "buttons_9rKwgG"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/765b0a396912163c0b4347095a2da8e1.png",
+        "image_overlay_opacity": 10,
+        "image_opacity": 1,
+        "image_border_radius": 16,
+        "force_page_width": true,
+        "image_height": "small",
+        "desktop_content_position": "top-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-3",
+        "content_max_width": 626,
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_left": 60,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 60,
+        "margin_right": 60,
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection",
-    "reviews_edGR3R"
+    "reviews_edGR3R",
+    "image_banner_DErxYD",
+    "featured_collection"
   ]
 }
