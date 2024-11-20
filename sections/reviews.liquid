@@ -272,90 +272,155 @@
             "name": "Text",
             "type": "text",
             "settings": [
-                {
-                    "type": "richtext",
-                    "id": "text",
-                    "label": "Text"
-                },
-                {
-                    "type": "header",
-                    "content": "Controls"
-                },
-                {
-                    "type": "select",
-                    "id": "type",
-                    "label": "Type",
-                    "default": "",
-                    "info": "Please choose 'normal' for headers.",
-                    "options": [
-                        {
-                            "value": "",
-                            "label": "Normal"
-                        },
-                        {
-                            "value": "subhead",
-                            "label": "Subhead"
-                        },
-                        {
-                            "value": "para",
-                            "label": "Para"
-                        },
-                        {
-                            "value": "subtext",
-                            "label": "Subtext"
-                        }
-                    ]
-                },
-                {
-                    "type": "text_alignment",
-                    "id": "text_alignment",
-                    "label": "Text alignment",
-                    "default": "center"
-                },
-                {
-                    "type": "number",
-                    "id": "max_width",
-                    "label": "Max Width"
-                },
-                {
-                    "type": "header",
-                    "content": "Color"
-                },
-                {
-                    "type": "color",
-                    "id": "text_normal_state_color",
-                    "label": "Normal state"
-                },
-                {
-                    "type": "color",
-                    "id": "text_hover_state_color",
-                    "label": "Hover state"
-                },
-                {
-                    "type": "header",
-                    "content": "Spacing"
-                },
-                {
-                    "type": "range",
-                    "id": "margin_bottom",
-                    "label": "Margin Bottom",
-                    "min": 0,
-                    "max": 100,
-                    "step": 1,
-                    "unit": "px",
-                    "default": 8
-                },
-                {
-                    "type": "range",
-                    "id": "margin_top",
-                    "label": "Margin Top",
-                    "min": 0,
-                    "max": 100,
-                    "step": 1,
-                    "unit": "px",
-                    "default": 8
-                }
-            ]
+          {
+              "type": "richtext",
+              "id": "text",
+              "label": "Text"
+          },
+          {
+              "type": "header",
+              "content": "Controls"
+          },
+          {
+              "type": "select",
+              "id": "type",
+              "label": "Type",
+              "default": "",
+              "info": "Please choose 'normal' for headers.",
+              "options": [
+                  {
+                      "value": "",
+                      "label": "Normal"
+                  },
+                  {
+                      "value": "subhead",
+                      "label": "Subhead"
+                  },
+                  {
+                      "value": "para",
+                      "label": "Para"
+                  },
+                  {
+                      "value": "subtext",
+                      "label": "Subtext"
+                  }
+              ]
+          },
+          {
+            "type": "paragraph",
+            "content": "Desktop"
+          },
+          {
+              "type": "text_alignment",
+              "id": "text_alignment",
+              "label": "Text alignment",
+              "default": "center"
+          },
+          {
+            "type": "number",
+            "id": "max_width",
+            "label": "Max Width"
+          },
+          {
+            "type": "paragraph",
+            "content": "Mobile"
+          },
+          {
+              "type": "text_alignment",
+              "id": "text_alignment_mobile",
+              "label": "Text alignment",
+              "default": "center"
+          },
+          {
+            "type": "number",
+            "id": "max_width_mobile",
+            "label": "Max Width"
+          },
+          {
+              "type": "header",
+              "content": "Color"
+          },
+          {
+            "type": "paragraph",
+            "content": "Desktop"
+          },
+          {
+              "type": "color",
+              "id": "text_normal_state_color",
+              "label": "Normal state"
+          },
+          {
+              "type": "color",
+              "id": "text_hover_state_color",
+              "label": "Hover state"
+          },
+          {
+            "type": "paragraph",
+            "content": "Mobile"
+          },
+          {
+              "type": "color",
+              "id": "text_normal_state_color_mobile",
+              "label": "Normal state"
+          },
+          {
+              "type": "color",
+              "id": "text_hover_state_color_mobile",
+              "label": "Hover state"
+          },
+          {
+              "type": "header",
+              "content": "Spacing"
+          },
+          {
+            "type": "paragraph",
+            "content": "Desktop"
+          },
+          {
+              "type": "range",
+              "id": "margin_bottom",
+              "label": "Margin Bottom",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "px",
+              "default": 8
+          },
+          {
+              "type": "range",
+              "id": "margin_top",
+              "label": "Margin Top",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "px",
+              "default": 8
+          },
+          {
+            "type": "paragraph",
+            "content": "Mobile"
+          },
+          {
+              "type": "range",
+              "id": "margin_bottom_mobile",
+              "label": "Margin Bottom",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "px",
+              "default": 8
+          },
+          {
+              "type": "range",
+              "id": "margin_top_mobile",
+              "label": "Margin Top",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "px",
+              "default": 8
+          }
+      ]
         },
         {
             "name": "Reviews Container",
