@@ -481,24 +481,24 @@
             "padding_bottom": 0
           }
         },
-        "article_Cdbxxx": {
+        "article_PMQmNV": {
           "type": "article",
           "settings": {
-            "article": "news/the-ultimate-guide-to-superfoods-unlock-your-nutrition",
-            "title": "<p>Test sqdqsdsqd</p>",
-            "read_time": "5 mins read",
+            "article": "news/14-supplements-to-manage-your-cortisol-levels",
+            "title": "",
+            "read_time": "4 mins read",
             "image_vertical_alignment": 50,
-            "image_horizontal_alignment": 50,
+            "image_horizontal_alignment": 15,
             "text_alignment_title": "left",
             "text_alignment_read_time": "left",
             "vertical_alignment": "flex-end",
             "text_alignment_title_mobile": "left",
             "text_alignment_read_time_mobile": "left",
             "vertical_alignment_mobile": "flex-end",
-            "title_color": "#eaf586",
+            "title_color": "#ffffff",
             "read_time_color": "#ffffff",
             "background_color": "linear-gradient(0deg, rgba(0, 0, 0, 0.4) 28.63%, rgba(0, 0, 0, 0) 100%),linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))",
-            "title_color_mobile": "#eaf586",
+            "title_color_mobile": "#ffffff",
             "read_time_color_mobile": "#ffffff",
             "background_color_mobile": "linear-gradient(0deg, rgba(0, 0, 0, 0.4) 28.63%, rgba(0, 0, 0, 0) 100%),linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))",
             "content_gap": 20,
@@ -545,14 +545,14 @@
             "padding_right_mobile": 24
           }
         },
-        "article_PMQmNV": {
+        "article_Cdbxxx": {
           "type": "article",
           "settings": {
-            "article": "news/14-supplements-to-manage-your-cortisol-levels",
+            "article": "news/the-ultimate-guide-to-superfoods-unlock-your-nutrition",
             "title": "",
-            "read_time": "4 mins read",
+            "read_time": "5 mins read",
             "image_vertical_alignment": 50,
-            "image_horizontal_alignment": 15,
+            "image_horizontal_alignment": 50,
             "text_alignment_title": "left",
             "text_alignment_read_time": "left",
             "vertical_alignment": "flex-end",
@@ -582,11 +582,20 @@
         "text_WKxmHC",
         "text_FGAAqD",
         "blog_posts_AAP8Hz",
-        "article_Cdbxxx",
+        "article_PMQmNV",
         "article_7ChM8U",
-        "article_PMQmNV"
+        "article_Cdbxxx"
       ],
-      "settings": {}
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0
+      }
     }
   },
   "order": [
