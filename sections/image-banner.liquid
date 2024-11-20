@@ -106,7 +106,6 @@
   #Banner-{{ section.id }} .banner--content {
     display: flex;
     width:100%;
-    position: relative;
   }
 
   #Banner-{{ section.id }} .banner__content {
@@ -116,12 +115,18 @@
     --padding-bottom: {{ section.settings.padding_bottom }}px;
 
     padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   #Banner-{{ section.id }} .banner--content .banner__box {
     --max-width: {{ section.settings.content_max_width }}px;
     max-width: var(--max-width);
-    min-width: 100%;
+    min-width: unset;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
   }
   
   #Banner-{{ section.id }} .banner__media img {
@@ -132,13 +137,45 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: fit-content;
-    height: 100%;
-    display: flex;
-  }
-  #Banner-{{ section.id }} .additional_image--container {
-    display: flex;
     height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: -1;
+  }
+
+  #Banner-{{ section.id }} .additional_image--container {
+    height: fit-content;
+  }
+
+  @media screen and (max-width: 749px) {
+    #Banner-{{ section.id }} {
+      --margin-top: {{ section.settings.margin_top_mobile }}px;
+      --margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+      --margin-left: {{ section.settings.margin_left_mobile }}px;
+      --margin-right: {{ section.settings.margin_right_mobile }}px;
+      
+    }
+
+
+    #Banner-{{ section.id }} .additional_images img {
+      aspect-ratio: 1;
+      width: 100%;
+      object-fit: cover;
+      height: auto;
+    }
+
+    #Banner-{{ section.id }} .banner__content {
+    --padding-left: {{ section.settings.padding_left_mobile }}px;
+    --padding-right: {{ section.settings.padding_right_mobile }}px;
+    --padding-top: {{ section.settings.padding_top_mobile }}px;
+    --padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    gap: 40px;
+  }
+
+    #Banner-{{ section.id }} .additional_image--container {
+      width: 100%
+    }
   }
 {%- endstyle -%}
 
@@ -230,7 +267,7 @@
   {%- endif -%}
   <div class="banner__flex banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <div class="banner--content banner--{{ section.settings.image_height }} banner__content--{{ section.settings.desktop_content_position }}">
-      <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+      <div class="banner__box banner--content-align-mobile-center content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'heading' -%}
@@ -305,6 +342,13 @@
                   margin-left: var(--margin-left);
                   margin-right: var(--margin-right);
               }
+
+              @media screen and (max-width: 749px) {
+                #Additional_image--{{ block.id }} {
+                  --margin-left: {{ block.settings.margin_left_mobile }}px;
+                  --margin-right: {{ block.settings.margin_right_mobile }}px;
+                }
+              }
               {% endstyle %}
               <div id="Additional_image--{{ block.id }}" class="additional_image--container" {{ block.shopify_attributes }}>
                 {{ image | image_url: width: image.width  | image_tag: loading: 'eager' }}
@@ -321,6 +365,7 @@
           #icon_with_text--{{ block.id }} {
             --text-alignment: {{ block.settings.text_alignment }};
             --max-width: {{ block.settings.max_width }}px;
+            --gap: {{ block.settings.gap_desktop }}px;
 
             text-align: var(--text-alignment);
             display: flex;
@@ -341,7 +386,7 @@
           }
 
           #icon_with_text--{{ block.id }} .icon_with_text--paragraph {
-            --padding-left: {{ block.settings.paragraph_padding_left }}px;
+            --padding-left: {{ block.settings.paragraph_padding_left_desktop }}px;
 
             padding-left: var(--padding-left);
           }
@@ -350,6 +395,26 @@
             --padding-left: {{ block.settings.title_padding_left }}px;
             
             padding-left: var(--padding-left);
+          }
+
+          @media screen and (max-width: 749px) and (min-width: 11000px) {
+            #icon_with_text--{{ block.id }} {
+              --gap: {{ block.settings.gap_tablet }}px;
+            }
+
+            #icon_with_text--{{ block.id }} .icon_with_text--paragraph {
+              --padding-left: {{ block.settings.paragraph_padding_left_tablet }}px;
+            }
+          }
+
+          @media screen and (max-width: 749px) {
+            #icon_with_text--{{ block.id }} .icon_with_text--paragraph {
+              --padding-left: {{ block.settings.paragraph_padding_left_mobile }}px;
+            }
+
+            #icon_with_text--{{ block.id }} {
+              --gap: {{ block.settings.gap_mobile }}px;
+            }
           }
         {% endstyle %}
         <div id="icon_with_text--{{ block.id }}" class="icon_with_text--container" {{ block.shopify_attributes }}>
@@ -542,86 +607,6 @@
       "default": 626
     },
     {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding_left",
-      "label": "Padding Left",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding_right",
-      "label": "Padding Right",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "label": "Margin Top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "margin_bottom",
-      "label": "Margin Bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "margin_left",
-      "label": "Margin Left",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "margin_right",
-      "label": "Margin Right",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
       "type": "header",
       "content": "t:sections.all.animation.content"
     },
@@ -684,7 +669,183 @@
       "id": "show_text_below",
       "default": true,
       "label": "t:sections.image-banner.settings.show_text_below.label"
-    }
+    },
+    {
+      "type": "paragraph",
+      "content": "Padding ( Desktop )"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "paragraph",
+      "content": "Padding ( Mobile )"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    { 
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "paragraph",
+      "content": "Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_left",
+      "label": "Margin Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_right",
+      "label": "Margin Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "paragraph",
+      "content": "Margin ( Mobile )"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_left_mobile",
+      "label": "Margin Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_right_mobile",
+      "label": "Margin Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
   ],
   "blocks": [
     {
@@ -876,6 +1037,10 @@
               ]
           },
           {
+            "type": "paragraph",
+            "content": "Desktop"
+          },
+          {
               "type": "text_alignment",
               "id": "text_alignment",
               "label": "Text alignment",
@@ -887,8 +1052,27 @@
             "label": "Max Width"
           },
           {
+            "type": "paragraph",
+            "content": "Mobile"
+          },
+          {
+              "type": "text_alignment",
+              "id": "text_alignment_mobile",
+              "label": "Text alignment",
+              "default": "center"
+          },
+          {
+            "type": "number",
+            "id": "max_width_mobile",
+            "label": "Max Width"
+          },
+          {
               "type": "header",
               "content": "Color"
+          },
+          {
+            "type": "paragraph",
+            "content": "Desktop"
           },
           {
               "type": "color",
@@ -901,8 +1085,26 @@
               "label": "Hover state"
           },
           {
+            "type": "paragraph",
+            "content": "Mobile"
+          },
+          {
+              "type": "color",
+              "id": "text_normal_state_color_mobile",
+              "label": "Normal state"
+          },
+          {
+              "type": "color",
+              "id": "text_hover_state_color_mobile",
+              "label": "Hover state"
+          },
+          {
               "type": "header",
               "content": "Spacing"
+          },
+          {
+            "type": "paragraph",
+            "content": "Desktop"
           },
           {
               "type": "range",
@@ -917,6 +1119,30 @@
           {
               "type": "range",
               "id": "margin_top",
+              "label": "Margin Top",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "px",
+              "default": 8
+          },
+          {
+            "type": "paragraph",
+            "content": "Mobile"
+          },
+          {
+              "type": "range",
+              "id": "margin_bottom_mobile",
+              "label": "Margin Bottom",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "px",
+              "default": 8
+          },
+          {
+              "type": "range",
+              "id": "margin_top_mobile",
               "label": "Margin Top",
               "min": 0,
               "max": 100,
@@ -990,6 +1216,36 @@
         {
           "type": "paragraph",
           "content": "Spacing"
+        },
+        {
+          "type": "range",
+          "id": "paragraph_padding_left_desktop",
+          "label": "Padding left ( Desktop )",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "paragraph_padding_left_tablet",
+          "label": "Padding left ( Tablet )",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "paragraph_padding_left_mobile",
+          "label": "Padding left ( Mobile )",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
         },
         {
           "type": "range",
@@ -1071,6 +1327,10 @@
           "content": "Spacing settings"
         },
         {
+          "type": "paragraph",
+          "content": "Margin ( Desktop )"
+        },
+        {
           "type": "range",
           "id": "margin_left",
           "label": "Margin Left",
@@ -1083,6 +1343,30 @@
         {
           "type": "range",
           "id": "margin_right",
+          "label": "Margin Right",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "paragraph",
+          "content": "Margin ( Mobile )"
+        },
+        {
+          "type": "range",
+          "id": "margin_left_mobile",
+          "label": "Margin Left",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "margin_right_mobile",
           "label": "Margin Right",
           "min": 0,
           "max": 100,

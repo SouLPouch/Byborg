@@ -86,7 +86,7 @@
   }
 
   .banner--small:not(.banner--adapt) {
-    min-height: 42rem;
+    min-height: 40rem;
   }
 
   .banner--medium:not(.banner--adapt) {
@@ -279,6 +279,7 @@
 .banner__flex {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .w-100 {
   width: 100%;
@@ -360,7 +361,6 @@
   padding: 4rem 1.5rem;
   position: relative;
   height: fit-content;
-  align-items: center;
   text-align: center;
   width: 100%;
   word-wrap: break-word;
@@ -471,6 +471,11 @@
 }
 
 @media screen and (max-width: 749px) {
+  .banner--content-align-mobile-center {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
   .banner--content-align-mobile-right .banner__buttons--multiple {
     justify-content: flex-end;
   }
