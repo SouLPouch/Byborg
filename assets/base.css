@@ -347,7 +347,7 @@ h4,
   h4,
   .h4 {
     font-size: calc(var(--font-heading-scale) * 1.25rem);
-    line-height: calc(1 + 0.46 / var(--font-heading-scale));
+    line-height: calc(1 + 0.2 / var(--font-heading-scale));
   }
 }
 
