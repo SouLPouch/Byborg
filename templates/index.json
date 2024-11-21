@@ -457,9 +457,10 @@
         "slide_3wHwzJ": {
           "type": "slide",
           "settings": {
-            "background_color": "",
+            "background_color": "#fcf5ea",
+            "heading_logo": "shopify://shop_images/Vector.png",
             "heading_logo_width_mobile": 80,
-            "heading_logo_width_desktop": 100,
+            "heading_logo_width_desktop": 260,
             "heading": "says",
             "heading_size": "h1",
             "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
@@ -477,9 +478,10 @@
         "slide_fhBJKg": {
           "type": "slide",
           "settings": {
-            "background_color": "",
+            "background_color": "#fcf5ea",
+            "heading_logo": "shopify://shop_images/Vector.png",
             "heading_logo_width_mobile": 80,
-            "heading_logo_width_desktop": 100,
+            "heading_logo_width_desktop": 260,
             "heading": "says",
             "heading_size": "h1",
             "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
