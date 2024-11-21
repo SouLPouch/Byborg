@@ -28,7 +28,10 @@
     opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
   }
 
-  #Banner-{{ section.id }} .banner__media::after {
+  #shopify-section-{{ section.id }} {
+    --background: {{ section.settings.background }};
+
+    background: var(--background);
   }
 
   #Banner-{{ section.id }} {
@@ -37,7 +40,6 @@
     --margin-left: {{ section.settings.margin_left }}px;
     --margin-right: {{ section.settings.margin_right }}px;
     --image-border-radius: {{ section.settings.image_border_radius }}px;
-
     border-radius: var(--image-border-radius);
     margin-top: var(--margin-top);
     margin-bottom: var(--margin-bottom);
@@ -458,6 +460,11 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-banner.settings.image_2.label"
+    },
+    {
+      "type": "color_background",
+      "id": "background",
+      "label": "Background"
     },
     {
       "type": "range",
