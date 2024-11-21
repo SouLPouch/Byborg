@@ -167,6 +167,11 @@
                         --text-alignment: {{ article_block.settings.text_alignment_title_mobile }};
                       }
 
+                      #Slide-{{ article_block.id }}-{{ forloop.index }} .article-card__image {
+                      --object-vertical-alignment: {{ article_block.settings.image_vertical_alignment_mobile }}%;
+                      --object-horizontal-alignment: {{ article_block.settings.image_horizontal_alignment_mobile }}%;
+                    }
+
                       #Slide-{{ article_block.id }}-{{ forloop.index }} .card__read-time {
                       --color: {{ article_block.settings.read_time_color_mobile }};
                       --text-alignment: {{ article_block.settings.text_alignment_read_time_mobile }};
@@ -179,7 +184,7 @@
                         {% if article_block.settings.text_alignment_read_time_mobile == "right" %}
                         --alignment: flex-end;
                         {% endif %}
-                    }
+                      }
                     }
                   {% endstyle %}
                   <li
@@ -613,7 +618,7 @@
         },
         {
           "type": "header",
-          "content": "Image controls"
+          "content": "Image controls ( Desktop )"
         },
         {
           "type": "range",
@@ -628,6 +633,30 @@
         {
           "type": "range",
           "id": "image_horizontal_alignment",
+          "label": "Image horizontal alignment",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50 
+        },
+        {
+          "type": "header",
+          "content": "Image controls ( Mobile )"
+        },
+        {
+          "type": "range",
+          "id": "image_vertical_alignment_mobile",
+          "label": "Image vertical alignment",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50 
+        },
+        {
+          "type": "range",
+          "id": "image_horizontal_alignment_mobile",
           "label": "Image horizontal alignment",
           "min": 0,
           "max": 100,
