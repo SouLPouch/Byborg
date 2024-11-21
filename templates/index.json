@@ -130,6 +130,7 @@
       ],
       "settings": {
         "image": "shopify://shop_images/af3dd6b444b32e33b1f6e10e687a76e2.png",
+        "background": "",
         "image_overlay_opacity": 0,
         "image_opacity": 0.3,
         "image_border_radius": 0,
@@ -392,6 +393,7 @@
       ],
       "settings": {
         "image": "shopify://shop_images/765b0a396912163c0b4347095a2da8e1.png",
+        "background": "linear-gradient(0,#fdf5e9,30%,#fdf5e9,31%,white)",
         "image_overlay_opacity": 10,
         "image_opacity": 1,
         "image_border_radius": 16,
@@ -424,6 +426,93 @@
         "margin_right_mobile": 24
       }
     },
+    "slideshow_8dyE4y": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_399Xcf": {
+          "type": "slide",
+          "settings": {
+            "background_color": "#fdf5e9",
+            "heading_logo": "shopify://shop_images/Vector.png",
+            "heading_logo_width_mobile": 80,
+            "heading_logo_width_desktop": 260,
+            "heading": "says",
+            "heading_size": "h1",
+            "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_3wHwzJ": {
+          "type": "slide",
+          "settings": {
+            "background_color": "",
+            "heading_logo_width_mobile": 80,
+            "heading_logo_width_desktop": 100,
+            "heading": "says",
+            "heading_size": "h1",
+            "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_fhBJKg": {
+          "type": "slide",
+          "settings": {
+            "background_color": "",
+            "heading_logo_width_mobile": 80,
+            "heading_logo_width_desktop": 100,
+            "heading": "says",
+            "heading_size": "h1",
+            "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_399Xcf",
+        "slide_3wHwzJ",
+        "slide_fhBJKg"
+      ],
+      "settings": {
+        "background_color": "#fdf5e9",
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "heading_fs_mobile": 18,
+        "heading_fs_desktop": 20,
+        "heading_gap": 16,
+        "quotes_width_mobile": 40,
+        "quotes_width_desktop": 40,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
     "featured_blog_KANiAK": {
       "type": "featured-blog",
       "blocks": {
@@ -439,9 +528,9 @@
             "text_normal_state_color_mobile": "#000000",
             "text_hover_state_color_mobile": "#000000",
             "margin_bottom": 12,
-            "margin_top": 32,
+            "margin_top": 0,
             "margin_bottom_mobile": 12,
-            "margin_top_mobile": 24
+            "margin_top_mobile": 0
           }
         },
         "text_FGAAqD": {
@@ -587,85 +676,15 @@
         "article_Cdbxxx"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_left": 0,
+        "background": "linear-gradient(180deg, #FDF5E9 0%, #EDEDF5 100%)",
+        "padding_top": 32,
+        "padding_bottom": 100,
+        "padding_left": 30,
         "padding_right": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 48,
         "padding_left_mobile": 0,
         "padding_right_mobile": 0
-      }
-    },
-    "slideshow_8dyE4y": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_399Xcf": {
-          "type": "slide",
-          "settings": {
-            "heading": "says",
-            "heading_size": "h1",
-            "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_3wHwzJ": {
-          "type": "slide",
-          "settings": {
-            "heading": "says",
-            "heading_size": "h1",
-            "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_fhBJKg": {
-          "type": "slide",
-          "settings": {
-            "heading": "says",
-            "heading_size": "h1",
-            "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "slide_399Xcf",
-        "slide_3wHwzJ",
-        "slide_fhBJKg"
-      ],
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "adapt_image",
-        "slider_visual": "dots",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
       }
     }
   },
@@ -673,7 +692,7 @@
     "image_banner",
     "reviews_edGR3R",
     "image_banner_DErxYD",
-    "featured_blog_KANiAK",
-    "slideshow_8dyE4y"
+    "slideshow_8dyE4y",
+    "featured_blog_KANiAK"
   ]
 }
